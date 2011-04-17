@@ -1,0 +1,11 @@
+<?php
+<<<<<<< HEAD
+$db = mysqli_connect('localhost', 'root', 'Peter804', 'themeparks')
+
+or die ("ERROR: connecting to mysql server!");
+?>
+=======
+$db = mysqli_connect('localhost', 'themeguru', 'parks', 'themeparks')
+
+or die ("ERROR: connecting to mysql server!");
+?>
