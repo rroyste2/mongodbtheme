@@ -1,9 +1,6 @@
 <?php 
  session_start();
 ?>
-<?php
-   include('db_connect.php');
-?>
 
 <?php
 $m = new Mongo();
@@ -70,12 +67,8 @@ License: Creative Commons Attribution
 						echo 'Name: ' . $obj['name'] . '<br/>'; 
 						echo 'City: ' . $obj['city'] . '<br/>';
 						echo 'State: ' . $obj['state'] . '<br/>';
-						echo 'Adult Price: ' . $obj['adult_price'] . '<br/>';
-						echo 'Chid Price: ' . $obj['children_price'] . '<br/>';
-						echo 'Phone Number: ' . $obj['Phone_Number'] . '<br/>';
 						echo 'URL: ' . $obj['url'] . '<br/>';
-						echo 'About: ' . $obj['about'] . '<br/>';
-						echo 'Picture: ' . $obj['picture'] . '<br/>';
+						
 						echo '<br/>'; 
 						}
                 ?>

@@ -1,8 +1,6 @@
 <?php 
  session_start();
 ?>
-
-
 <?php
 $m = new Mongo();
 $db = $m->themeparks;
@@ -61,17 +59,19 @@ License: Creative Commons Attribution
         <div id="body">            
             <div id="content">
                 <div class="box">                                  
-              		<?php
+              
+              <?php
 					$collection = $db->rides; 
-						$query = array( "type" => rollercoaster);
+						$query = array( "type" => water);
 						$cursor = $collection->find($query); 
 						
-						echo $cursor->count() . ' roller coasters. <br/>';    
+						echo $cursor->count() . ' Water Rides. <br/>';    
 						foreach ($cursor as $obj) {  
 						echo 'Park: ' . $obj['park'] ; 
 						echo 'Name: ' . $obj['ride'] ; 
 						echo 'Type: ' . $obj['type'] . '<br/>';
 						}
+                
                 ?>
 
               </div>

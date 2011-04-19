@@ -1,9 +1,7 @@
 <?php
 session_start();
 ?>
-<?php
-   include('db_connect.php');
-?>
+
 <?php
 $m = new Mongo();
 $db = $m->themeparks;
@@ -68,37 +66,25 @@ License: Creative Commons Attribution
                     <p>
                       <?php
                       	$rows = true;
-                    	//$query = "SELECT park_id FROM general_info ORDER BY RAND() LIMIT 1";
-						
+                    							
 						// access collection  
 						$collection = $db->parks; 
-						$cursor = $collection->find();
-                    	//$result = mysqli_query($db, $query)or die("Error Querying Database");
-                    	//$row = mysqli_fetch_array($result);
-                    	//$id = $row['park_id'];
-						//$query = "SELECT * from general_info g INNER JOIN parks p ON g.park_id = p.id INNER JOIN zipcode z ON p.id = z.zip_id WHERE g.park_id = '$id' ";
-						//$result = mysqli_query($db, $query) or die ("Error Querying Database - feature");	
-						//while($row = mysqli_fetch_array($result)){
-						echo $cursor->count() . ' document(s) found. <br/>';    
-						foreach ($cursor as $obj) {  
+						$obj = $collection->findOne();
+                    	
+						
+						
+						
+						//echo $cursor->count() . ' document(s) found. <br/>';    
+						//foreach ($cursor as $obj) {  
 						echo 'Name: ' . $obj['name'] . '<br/>'; 
-						echo 'Price: ' . $obj['price'] . '<br/>';
+						echo 'City: ' . $obj['city'] . '<br/>';
+						echo 'State: ' . $obj['state'] . '<br/>';
 						echo '<br/>';  
 
-						/*	$park = $row['name'];
-							$city = $row['City'];
-							$state = $row['State'];
-							$zip = $row['zipcode'];
-							$adult = $row['adult_price'];
-							$child = $row['children_price'];
-							$phone = $row['Phone_Number'];
-							$about = $row['about'];
-							$picture = $row['picture'];
-							$url = $row['url'];
-						*/}
+						//}
 					?>
                     <?php
-						echo "<h1><center><a href='$url'>" . $park . "</a></center><br /></h1>
+					/*	echo "<h1><center><a href='$url'>" . $park . "</a></center><br /></h1>
                     	 	<p>
                     	 	<div id=featuredparkimage><img src='$picture' width='275' height='200' /></div>
                     		<h4>Location: " . $city . ", " .  $state . " " . $zip . "<br />
@@ -169,7 +155,7 @@ License: Creative Commons Attribution
 	   				 }
 	   				 echo "</table>\n<br />";
 	   				 }
-						
+						*/
 					?>
                     </p>
               </div>
