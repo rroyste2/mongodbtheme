@@ -61,7 +61,7 @@ License: Creative Commons Attribution
                 <div class="box">                                  
               
               <?php
-					$collection = $db->rides; 
+					/*$collection = $db->rides; 
 						$query = array( "type" => water);
 						$cursor = $collection->find($query); 
 						
@@ -70,10 +70,29 @@ License: Creative Commons Attribution
 						echo 'Park: ' . $obj['park'] ; 
 						echo 'Name: ' . $obj['ride'] ; 
 						echo 'Type: ' . $obj['type'] . '<br/>';
-						}
+						}*/
                 
-                ?>
+				
+				$collection = $db->rides; 
+						$query = array( "type" => water);
+						$cursor = $collection->find($query); 
+						echo $cursor->count() . ' Water rides. <br/>'; 
+						echo "<table id=\"parkinfo\">\n<tr><th>Name</th><th>Park</th><th>Type</th><th>\n\n";
+						
+						
+						foreach ($cursor as $obj) {  
+						$park = $obj['park'];
+						$name = $obj['ride'];
+						$type = $obj['type'];
 
+						//echo 'Park: ' . $obj['park'] ; 
+						//echo 'Name: ' . $obj['ride'] ; 
+						//echo 'Type: ' . $obj['type'] . '<br/>';
+						echo "<tr><td>$name</td><td ><a href = \"park.php?id=" . $id . "\">$park</a></td><td >$type</td><td >\n";
+						}
+
+                ?>
+</table>
               </div>
         </div>
         

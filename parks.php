@@ -60,6 +60,7 @@ License: Creative Commons Attribution
             <div id="content">
                 <div class="box">                                  
                 <?php
+				/*
                 	$collection = $db->parks; 
 						$cursor = $collection->find(); 
 						echo $cursor->count() . ' Parks. <br/>';    
@@ -67,11 +68,40 @@ License: Creative Commons Attribution
 						echo 'Name: ' . $obj['name'] . '<br/>'; 
 						echo 'City: ' . $obj['city'] . '<br/>';
 						echo 'State: ' . $obj['state'] . '<br/>';
-						echo 'URL: ' . $obj['url'] . '<br/>';
+						//echo 'URL: ' . $obj['url'] . '<br/>';
+						$reference = $obj['url'];
+						echo "<a href=$reference> " ;
+							echo $obj['url'] . '<br/></a>';
 						
 						echo '<br/>'; 
 						}
+						*/
+						$collection = $db->parks; 
+						//$query = array( "type" => rollercoaster);
+						$cursor = $collection->find(); 
+						echo $cursor->count() . ' Parks. <br/>'; 
+						echo "<table id=\"parkinfo\">\n<tr><th>Name</th><th>City</th><th>State</th><th>URL</th><th>\n\n";
+						
+						
+						foreach ($cursor as $obj) {  
+						$name = $obj['name'];
+						$city = $obj['city'];
+						$state = $obj['state'];
+						$url = $obj['url'];
+
+						$reference = $obj['url'];
+						//echo "<a href=$reference> " ;
+						//	echo $obj['url'] . '<br/></a>';
+						
+						echo "<tr><td>$name</td><td >$city</a></td><td >$state</td><td ><a href = $reference>$url</td><td >\n";
+						}
+						
+						
+						
+						
+						
                 ?>
+				</table>
               </div>
         </div>
         

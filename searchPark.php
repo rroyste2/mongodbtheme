@@ -57,27 +57,37 @@ License: Creative Commons Attribution
 		<div id="content">
             <div class="box">
 		<form action="searchPark.php" method="POST">
-			Enter a Query: <input type=text name=query /><input type=submit value="Search" />
+			Enter the name of a park to search for: <input type=text name=query /><input type=submit value="Search" />
 		</form><br /><hr />
 		<!--TODO: Query Code -->
 		<?php
 		
 	 $collection = $db->parks; 
+	 if (isset($_POST['query']))
+  {
 			$searchterm = $_POST['query'];
 			            $regexobj = new MongoRegex("/^$searchterm/i");
-						//$query = array( "name" => $searchterm);
 						$query = array( "name" => $regexobj);
-						//need to $_post
 						$cursor = $collection->find($query); 
+						echo $cursor->count() . ' Parks. <br/>'; 
+						echo "<table id=\"parkinfo\">\n<tr><th>Name</th><th>City</th><th>State</th><th>URL</th><th>\n\n";
 						
-						//echo $cursor->count() . ' Family rides. <br/>';    
+						
 						foreach ($cursor as $obj) {  
-						echo 'Park: ' . $obj['park'] ; 
-						echo 'Name: ' . $obj['name'] ; 
-						echo 'Type: ' . $obj['type'] . '<br/>';
+						$name = $obj['name'];
+						$city = $obj['city'];
+						$state = $obj['state'];
+						$url = $obj['url'];
+
+						$reference = $obj['url'];
+						//echo "<a href=$reference> " ;
+						//	echo $obj['url'] . '<br/></a>';
+						
+						echo "<tr><td>$name</td><td >$city</a></td><td >$state</td><td ><a href = $reference>$url</td><td >\n";}
 						}
+						
 						?>
-	
+	</table>
             </div>
         </div>
         <?PHP

@@ -42,15 +42,25 @@ License: Creative Commons Attribution
     <div id="nav">
     	<ul class="sf-menu dropdown">
         	<li class="selected"><a href="index.php">Home</a></li>
-            <li><a " href="parks.php">Parks</a></li>
+            <li><a class="has_submenu" href="parks.php">Parks</a>
+            	<ul>
+                	<li><a href="addpark.php">Add a park</a></li>
+					<li><a href="deletepark.php">Delete a park</a></li>
+					
+                </ul>
+			
+			
             <li><a class="has_submenu" href="rides.php">Rides</a>
             	<ul>
                 	<li><a href="rides.php">Roller Coasters</a></li>
                     <li><a href="showwaterrides.php">Water rides</a></li>
                     <li><a href="showfamilyrides.php">Family rides</a></li>
+					<li><a href="addride.php">Add a ride</a></li>
+					<li><a href="deleteride.php">Delete a ride</a></li>
                 </ul>
             </li>
             <li><a href="searchPark.php">Search Parks</a></li>
+			<li><a href="searchRides.php">Search Rides</a></li>
             <li><a href="about.php">About Us</a></li>
         </ul>
 		
@@ -69,94 +79,21 @@ License: Creative Commons Attribution
                     							
 						// access collection  
 						$collection = $db->parks; 
-						$obj = $collection->findOne();
-                    	
-						
-						
-						
-						//echo $cursor->count() . ' document(s) found. <br/>';    
-						//foreach ($cursor as $obj) {  
-						echo 'Name: ' . $obj['name'] . '<br/>'; 
-						echo 'City: ' . $obj['city'] . '<br/>';
-						echo 'State: ' . $obj['state'] . '<br/>';
-						echo '<br/>';  
-
-						//}
-					?>
-                    <?php
-					/*	echo "<h1><center><a href='$url'>" . $park . "</a></center><br /></h1>
+						$obj = $collection->findOne();  
+						$name = $obj['name'];
+						$city = $obj['city'];
+						$state = $obj['state'];
+						$picture = $obj['picture'];
+						echo "<h1><center><a href='$url'>" . $name . "</a></center><br /></h1>
                     	 	<p>
                     	 	<div id=featuredparkimage><img src='$picture' width='275' height='200' /></div>
-                    		<h4>Location: " . $city . ", " .  $state . " " . $zip . "<br />
-                    		Phone: " . $phone . "<br />
-                    		Adult Price: " . $adult . "<br />
-                    		Child Price: " . $child . "<br /></h4>
+                    		<h4>Location: " . $city . ", " .  $state . " <br />
+                    		
                     		</p>";
-                    	echo "<p>$about</p><br />";
-                    	$query = "SELECT * from rollercoaster r WHERE r.park_id = '$id'";
-   						$result = mysqli_query($db, $query) or die ("Error Querying Database - ride");
-   						if ($result){
-   						
-   					
-   					while($row = mysqli_fetch_array($result)) {
-   						while ($rows){
-   						echo "<h4><center>Rollercoasters at $park</h4>";
-   						echo "<table id=\"rollercoasters\">\n<tr><th>Name</th><th>Type</th><th>Speed</th><th>Height</th><th>Length</th></tr>\n\n";
-   						$rows = false;
-   						}
-  						$name = $row['coaster_name'];
-  						$type = $row['Type'];
-						$speed = $row['Speed_mph'];
-						$height = $row['Height_ft'];
-						$length = $row['Length_min'];
-		  				echo "<tr><td>$name</td><td >$type</td><td >$speed mph</td><td >$height ft</td><td >$length min</td></tr>\n";
-	   				 }
-	   				 echo "</table>\n<br />";
-	   				 }
-	   				 $query = "SELECT * from familyrides f WHERE f.park_id = '$id'";
-   						$result = mysqli_query($db, $query) or die ("Error Querying Database - fride");
-   						$rows = true;
-   						if ($result){
-   						
-   					
-   					while($row = mysqli_fetch_array($result)) {
-   						while ($rows){
-   						echo "<h4><center>Family Rides at $park</h4>";
-   						echo "<table id=\"familyrides\">\n<tr><th>Name</th><th>Type</th><th>Length</th></tr>\n\n";
-   						$rows = false;
-   						}
-  						$name = $row['ride_name'];
-  						$type = $row['Type'];
-						$speed = $row['Speed_mph'];
-						$height = $row['Height_ft'];
-						$length = $row['Length_min'];
-		  				echo "<tr><td>$name</td><td >$type</td><td >$length min</td></tr>\n";
-	   				 }
-	   				 echo "</table>\n<br />";
-	   				 }
-	   				 $query = "SELECT * from waterrides w WHERE w.park_id = '$id'";
-   						$result = mysqli_query($db, $query) or die ("Error Querying Database - fride");
-   						$rows = true;
-   						if ($result){
-   						
-   					
-   					while($row = mysqli_fetch_array($result)) {
-   						while ($rows){
-   						echo "<h4><center>Water Rides at $park</h4>";
-   						echo "<table id=\"familyrides\">\n<tr><th>Name</th><th>Type</th><th>Length</th></tr>\n\n";
-   						$rows = false;
-   						}
-  						$name = $row['ride_name'];
-  						$type = $row['Type'];
-						$speed = $row['Speed_mph'];
-						$height = $row['Height_ft'];
-						$length = $row['Length_min'];
-		  				echo "<tr><td>$name</td><td >$type</td><td >$length min</td></tr>\n";
-	   				 }
-	   				 echo "</table>\n<br />";
-	   				 }
-						*/
+						//}
 					?>
+                    
+					</table>
                     </p>
               </div>
         </div>

@@ -1,11 +1,10 @@
-<?php 
- session_start();
+<?php
+session_start();
 ?>
 <?php
 $m = new Mongo();
 $db = $m->themeparks;
 ?>
-
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -20,18 +19,10 @@ $db = $m->themeparks;
 <script type="text/javascript" src="js/superfish.js"></script>
 
 <script type="text/javascript" src="js/custom.js"></script>
-
-<!--
-widget, a free CSS web template by spyka Webmaster (www.spyka.net)
-
-Download: http://www.spyka.net/web-templates/widget/
-
-License: Creative Commons Attribution
-//-->
 </head>
 
 <body class="noheader">
-<div id="container">
+<div id="container"> 
 	<div id="header">
     	<h1><a href="index.php">Themepark<strong>Database</strong></a></h1>
         <h2>The ultimate source for themepark and coaster information.</h2>
@@ -41,9 +32,9 @@ License: Creative Commons Attribution
     </div>
     <div id="nav">
     	<ul class="sf-menu dropdown">
-        	<li><a href="index.php">Home</a></li>
+        	<li class="selected"><a href="index.php">Home</a></li>
             <li><a " href="parks.php">Parks</a></li>
-            <li class="selected"><a class="has_submenu" href="rides.php">Rides</a>
+            <li><a class="has_submenu" href="rides.php">Rides</a>
             	<ul>
                 	<li><a href="rides.php">Roller Coasters</a></li>
                     <li><a href="showwaterrides.php">Water rides</a></li>
@@ -55,52 +46,29 @@ License: Creative Commons Attribution
         </ul>
 		
 	</div>
-
-        <div id="body">            
+	 <div id="body">            
             <div id="content">
                 <div class="box">                                  
-              		<?php
-                /*$collection = $db->rides; 
-						$query = array( "type" => family);
-						$cursor = $collection->find($query); 
-						
-						echo $cursor->count() . ' Family rides. <br/>';    
-						foreach ($cursor as $obj) {  
-						echo 'Park: ' . $obj['park'] ; 
-						echo 'Name: ' . $obj['ride'] ; 
-						echo 'Type: ' . $obj['type'] . '<br/>';
-						}*/
-						
-						$collection = $db->rides; 
-						$query = array( "type" => family);
-						$cursor = $collection->find($query); 
-						echo $cursor->count() . ' Family Ride. <br/>'; 
-						echo "<table id=\"parkinfo\">\n<tr><th>Name</th><th>Park</th><th>Type</th><th>\n\n";
-						
-						
-						foreach ($cursor as $obj) {  
-						$park = $obj['park'];
-						$name = $obj['ride'];
-						$type = $obj['type'];
-
-						//echo 'Park: ' . $obj['park'] ; 
-						//echo 'Name: ' . $obj['ride'] ; 
-						//echo 'Type: ' . $obj['type'] . '<br/>';
-						echo "<tr><td>$name</td><td ><a href = \"park.php?id=" . $id . "\">$park</a></td><td >$type</td><td >\n";
-						}
-						
-                ?>
-</table>
+                    <p>
+	<form method="post" action="dPark.php">
+		<table>
+		<tr><td>What park would you like to delete? <input type = "text" name = "park" size = '50'></td></tr>
+		</table>
+		<input type="submit" value="Delete Park" name="submit" />
+		</form>
+		
+	</p>
               </div>
         </div>
-        
         <?php
         	include('sidebar.php');
         ?>
     	<div class="clear"></div>
+    	
     </div></div>
     <?php
-    	include('footerSmall.php');
-    ?>
+    		include('footerSmall.php');
+    	?>
+
 </body>
 </html>

@@ -65,15 +65,22 @@ License: Creative Commons Attribution
 					$collection = $db->rides; 
 						$query = array( "type" => rollercoaster);
 						$cursor = $collection->find($query); 
+						echo $cursor->count() . ' Roller Coasters. <br/>'; 
+						echo "<table id=\"parkinfo\">\n<tr><th>Name</th><th>Park</th><th>Type</th><th>\n\n";
 						
-						echo $cursor->count() . ' roller coasters. <br/>';    
 						foreach ($cursor as $obj) {  
-						echo 'Park: ' . $obj['park'] ; 
-						echo 'Name: ' . $obj['ride'] ; 
-						echo 'Type: ' . $obj['type'] . '<br/>';
+						$park = $obj['park'];
+						$name = $obj['ride'];
+						$type = $obj['type'];
+						$rideurl = $obj['rideurl'];
+						$reference = $obj['rideurl'];
+						
+						echo "<tr><td><a href = $reference>$name</td><td ><a href = \"park.php?id=" . $id . "\">$park</a></td><td >$type</td><td >";
+						//echo "<tr><td>$name</td><td >$city</a></td><td >$state</td><td ><a href = $reference>$url</td><td >\n";
 						}
+						
                 ?>
-
+</table>
               </div>
         </div>
         
